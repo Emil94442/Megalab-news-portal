@@ -1,0 +1,100 @@
+.TitleMegalab {
+    .Registration__title {
+        display: flex;
+        width: 200px;
+        height: 20px;
+       // border: 2px solid red;
+        margin: 0 auto;
+        position: relative;
+        left: 15px;
+        top: 10px;
+        .title__first-letter {
+            width: 24.9px;
+            height: 16.62px;
+        }
+        .title__second-letters {
+            .title__second-letter {
+                height: 14.78px;
+                width: 16.51px;
+                border-radius: 0px;  
+                position: relative;
+                bottom: 12px;
+                margin-left: 2.35px;            
+            }
+            .title__second-letter-two {
+                height: 5.84px;
+                width: 15.85px; 
+                position: relative;
+                right: 18px;
+                margin-left: 2.35px;         
+            }
+        }
+        .title__third-letter {
+            height: 22.84px;
+            width: 16.69px;
+            position: relative;
+            right: 15px;
+        }
+        .title__4th-letter {
+            /*position: absolute;
+            left: 28.26%;
+            right: 66.03%;
+            top: 1%;
+            bottom: 48.97%;*/
+            height: 16.97608184814453px;
+            width: 15.64716911315918px;
+            position: relative;
+            right: 12px;
+        }
+        .title__5th-letter {
+           /* position: absolute;
+            left: 31.90%;
+            right: 66.03%;
+            top: 0%;
+            bottom: 48.97%;*/
+            height: 22.755136489868164px;
+            width: 4.596088886260986px;
+            position: relative;
+            right: 9px;
+            bottom: 5.5px;
+        }
+        .title__6th-letters {
+            .title__6th-letter {
+                /*position: absolute;
+                left: 33.40%;
+                right: 66.03%;
+                top: 0.03%;
+                bottom: 48.97%;*/
+                height: 10.776900291442871px;
+                width: 15.650209426879883px;
+                position: relative;
+                right: 7px;
+                bottom: 14px;
+            }
+            .title__6th-letter-two {
+               /* position: absolute;
+                left: 33.60%;
+                right: 66.03%;
+                top: 2.55%;
+                bottom: 48.97%;*/
+                height: 9.116490364074707px;
+                width: 15.077034950256348px;
+                position: relative;
+                right: 21.5px;
+                bottom: 2px;
+            }
+        }
+        .title__7th-letter {
+            /*position: absolute;
+            left: 57.10%;
+            right: 66.03%;
+            top: 0.03%;
+            bottom: 48.97%;*/
+            height: 23.114240646362305px;
+            width: 16.700056076049805px;
+            position: relative;
+            right: 17px;
+            bottom: 5px;
+        }
+    }
+}

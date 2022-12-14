@@ -1,0 +1,19 @@
+.FormInput {
+    .Registration__form-one {
+        height: 40px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        margin-top: 20px;
+        .form-one__input {
+            width: 261px;
+            height: 39px;
+            border: 1px solid #E4DFDC;
+            border-radius: 10px;
+        }
+    }
+}
