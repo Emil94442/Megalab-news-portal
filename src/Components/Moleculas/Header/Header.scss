@@ -1,0 +1,84 @@
+.header {
+    width: 100%;
+    height: 240px;
+    background: url('../../../../public/Images/Header/header__bg.jpg');
+    .header__content {
+        display: flex;
+        justify-content: space-between;
+        width: 1110px;
+        height: 100%;
+        //border: 2px solid teal;
+        margin: 0 auto;
+        .header__block {
+            width: 15%;
+            height: 100px;
+            //border: 2px solid red;
+            margin-top: 22px;
+            .header__logo {
+                .logo__second-letter {
+                    position: relative;
+                    bottom: 8px;
+                    margin-left: 2px;
+                }
+                .logo__second-letter-two {
+                    position: relative;
+                    right: 2px;
+                    bottom: -5px;
+                    margin-left: -15px;
+                }
+                .logo__3th-letter {
+                    margin-left: 0.4px;
+                    position: relative;
+                    top: 3px;
+                }
+                .logo__4th-letter {
+                    margin-left: 2px;
+                    position: relative;
+                    top: 1.5px;
+                }
+                .logo__5th-letter {
+                    margin-left: 2px;
+                    position: relative;
+                    top: -1.3px;
+                }
+                .logo__6th-letter {
+                    margin-left: 2px;
+                    position: relative;
+                    top: -8px;
+                }
+                .logo__6th-letter-two {
+                    position: relative;
+                    top: 5px;
+                    right: 16px;
+                }
+                .logo__7th-letter {
+                    position: relative;
+                    right: 13px;
+                    bottom: 1px;
+                }
+            }
+        }
+        .header__block:nth-child(2) {
+            width: 33%;
+            margin-top: 114px;
+            .header__title {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 72px;
+                line-height: 83px;
+                /* identical to box height */
+
+                color: #FFFFFF;
+            }
+        }
+        .header__block:nth-child(3) {
+            width: 13%;
+
+            .header__menu {
+                display: flex;
+                justify-content: space-between;
+                
+            }
+        }
+    }
+}

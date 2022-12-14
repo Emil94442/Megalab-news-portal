@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './App.scss'
 import Autorization from './Components/authorization/Autorization';
+import MainPage from './Components/MainPage/MainPage';
 import Registration from './Components/Registration/Registration';
 import Modal from './Components/UI/Modal';
 
@@ -22,11 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Button variant='primary' onClick={() => OpenModal('reg')}>Регистрация</Button>
-      <Button variant='primary' onClick={() => OpenModal('aut')}>Авторизация</Button>
-      <Modal modal={modal} setModal={setModal}>
-         {valueModal === 'reg' ? <Registration/> : <Autorization/>}
-      </Modal>
+       <MainPage/>
     </div>
   );
 }
