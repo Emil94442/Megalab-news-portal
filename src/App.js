@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import './App.scss'
-import InnerPage from './Components/InnerPage/InnerPage';
+import './App.scss';
+import { Button } from 'react-bootstrap';
+import MenuStripes from './Components/MainPage/MainPart/MenuStripes/MenuStripes';
+import Share from './Components/Share/Share';
+import Registration from './Components/Registration/Registration'
 
 function App() {
 
@@ -19,7 +22,8 @@ function App() {
 
   return (
     <div className="App">
-       <InnerPage/>
+       <Button variant='primary'>Menu</Button>
+       <Registration/>
     </div>
   );
 }
