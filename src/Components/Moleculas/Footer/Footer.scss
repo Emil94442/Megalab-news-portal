@@ -21,8 +21,12 @@
             margin-top: 45px;
             position: relative;
             top: 37px;
+            .footer__link-profile {
+                cursor: pointer;
+            }
             .footer__likes-news {
                 margin-left: 36px;
+                cursor: pointer;
             }
         }
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import './MainPart.scss'
+import Post from './Post/Post'
 
 const MainPart = () => {
   return (
@@ -34,112 +35,12 @@ const MainPart = () => {
                  </div>
             </div>
 
-            <div className="MainPart__posts posts">
-                <div className="posts__content">
-                    <img src="Images/Header/Main__one-img.jpg" alt="" />
-                    <div className="posts__text-content">
-                        <div className="posts__data">
-                           29.11.2022
-                        </div>
-                        <div className="posts__title">
-                           Заголовок новости
-                        </div>
-                        <div className="posts__text">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                        </div>
-                        <div className="posts__read-more">
-                           Читать дальше >>
-                        </div>
-                        <div className="posts__share-img">
-                           <img src="Images/Header/Share.svg" alt="" className=''/>
-                        </div>
-                    </div> 
-                </div>
-                <div className="posts__line"></div>
-                <div className="posts__content">
-                    <img src="Images/Header/Main__two-img.jpg" alt="" />
-                    <div className="posts__text-content">
-                        <div className="posts__data">
-                           29.11.2022
-                        </div>
-                        <div className="posts__title">
-                           Заголовок новости
-                        </div>
-                        <div className="posts__text">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                        </div>
-                        <div className="posts__read-more">
-                           Читать дальше >>
-                        </div>
-                        <div className="posts__share-img">
-                           <img src="Images/Header/Share.svg" alt="" className=''/>
-                        </div>
-                    </div> 
-                </div>
-                <div className="posts__line"></div>
-                <div className="posts__content">
-                    <img src="Images/Header/Main__three-img.jpg" alt="" />
-                    <div className="posts__text-content">
-                        <div className="posts__data">
-                           29.11.2022
-                        </div>
-                        <div className="posts__title">
-                           Заголовок новости
-                        </div>
-                        <div className="posts__text">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                        </div>
-                        <div className="posts__read-more">
-                           Читать дальше >>
-                        </div>
-                        <div className="posts__share-img">
-                           <img src="Images/Header/Share.svg" alt="" className=''/>
-                        </div>
-                    </div> 
-                </div>
-                <div className="posts__line"></div>
-                <div className="posts__content">
-                    <img src="Images/Header/Main__four-img.jpg" alt="" />
-                    <div className="posts__text-content">
-                        <div className="posts__data">
-                           29.11.2022
-                        </div>
-                        <div className="posts__title">
-                           Заголовок новости
-                        </div>
-                        <div className="posts__text">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                        </div>
-                        <div className="posts__read-more">
-                           Читать дальше >>
-                        </div>
-                        <div className="posts__share-img">
-                           <img src="Images/Header/Share.svg" alt="" className=''/>
-                        </div>
-                    </div> 
-                </div>
-                <div className="posts__line"></div>
-                <div className="posts__content">
-                    <img src="Images/Header/Main__five-img.jpg" alt="" />
-                    <div className="posts__text-content">
-                        <div className="posts__data">
-                           29.11.2022
-                        </div>
-                        <div className="posts__title">
-                           Заголовок новости
-                        </div>
-                        <div className="posts__text">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                        </div>
-                        <div className="posts__read-more">
-                           Читать дальше >>
-                        </div>
-                        <div className="posts__share-img">
-                           <img src="Images/Header/Share.svg" alt="" className=''/>
-                        </div>
-                    </div> 
-                </div>
-                <div className="posts__line"></div>
+            <div className="MainPart__posts posts">  
+                <Post picture="Images/Header/Main__one-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'}/>
+                <Post picture="Images/Header/Main__two-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
+                <Post picture="Images/Header/Main__three-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
+                <Post picture="Images/Header/Main__four-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
+                <Post picture="Images/Header/Main__five-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
             </div>
         </div>
     </div>

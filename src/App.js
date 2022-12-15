@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import MenuStripes from './Components/MainPage/MainPart/MenuStripes/MenuStripes';
 import Share from './Components/Share/Share';
 import Registration from './Components/Registration/Registration'
+import LikePage from './Components/likePage/LikePage';
+import MainPage from './Components/MainPage/MainPage';
 
 function App() {
 
@@ -22,8 +24,7 @@ function App() {
 
   return (
     <div className="App">
-       <Button variant='primary'>Menu</Button>
-       <Registration/>
+       <LikePage/>
     </div>
   );
 }

@@ -1,0 +1,36 @@
+.lpc {
+    .lpc__content {
+        width: 1110px;
+        height: 1335px;
+       // border: 2px solid green;
+        margin: 0 auto;
+        margin-top: 30px;
+        .lpc__block-menu {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 30px;
+         //   border: 2px solid red;
+            .lpc__nav-menu {
+                img {
+                    margin-left: 27px;
+                }
+            }
+        }
+        .lpc__block-main {
+            width: 100%;
+            height: 90%;
+          //  border: 2px solid red;
+            margin-top: 51px;
+            .lpc__title {
+                font-family: 'Ubuntu';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 48px;
+                line-height: 55px;
+                
+                color: #000000;
+            }
+        }
+    }
+}
