@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from '../../Moleculas/Footer/Footer'
 import './MainPart.scss'
 
 const MainPart = () => {

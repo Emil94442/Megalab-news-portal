@@ -2,9 +2,9 @@ import React from 'react'
 import MegalabTitle from '../Header/MegalabTitle/MegalabTitle'
 import './Footer.scss'
 
-const Footer = () => {
+const Footer = ({...props}) => {
   return (
-    <footer className='footer'>
+    <footer className='footer' {...props}>
         <div className="footer__content">
             <div className="footer__title">
                 <MegalabTitle style={{marginTop: '37px'}}/>

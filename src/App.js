@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import './App.scss'
-import Autorization from './Components/authorization/Autorization';
-import MainPage from './Components/MainPage/MainPage';
-import Registration from './Components/Registration/Registration';
-import Modal from './Components/UI/Modal';
+import InnerPage from './Components/InnerPage/InnerPage';
 
 function App() {
 
@@ -23,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-       <MainPage/>
+       <InnerPage/>
     </div>
   );
 }
