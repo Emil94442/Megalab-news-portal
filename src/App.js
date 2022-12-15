@@ -7,6 +7,7 @@ import Registration from './Components/Registration/Registration'
 import LikePage from './Components/likePage/LikePage';
 import MainPage from './Components/MainPage/MainPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
+import CreatePost from './Components/CreatePost/CreatePost';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-       <ProfilePage/>
+        <CreatePost/>
     </div>
   );
 }
