@@ -1,21 +1,13 @@
 import React from 'react'
 import Post from '../../MainPage/MainPart/Post/Post'
 import './LikePageContent.scss'
+import Menu from './Menu/Menu'
 
 const LikePageContent = () => {
   return (
     <div className='lpc'>
        <div className="lpc__content">
-            <div className="lpc__block-menu">
-                <div className="lpc__logo">
-                    <img src="Images/LikePage/title.svg" alt=""/>
-                </div>
-                <div className="lpc__nav-menu">
-                    <img src="Images/LikePage/search.svg" alt=""/>
-                    <img src="Images/LikePage/profile.svg" alt=""/>
-                    <img src="Images/LikePage/menu.svg" alt=""/>
-                </div>
-            </div>
+            <Menu/>
 
             <div className="lpc__block-main">
                 <div className="lpc__title">Избранные новости</div>

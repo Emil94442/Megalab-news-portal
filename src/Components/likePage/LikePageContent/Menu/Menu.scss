@@ -1,0 +1,15 @@
+.Menu {
+    .lpc__block-menu {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 30px;
+     //   border: 2px solid red;
+        .lpc__nav-menu {
+            img {
+                margin-left: 27px;
+                cursor: pointer;
+            }
+        }
+    }
+}

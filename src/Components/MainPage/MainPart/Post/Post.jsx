@@ -1,7 +1,7 @@
 import React from 'react'
 import './Post.scss'
 
-const Post = ({picture , heart , textClass , ...props}) => {
+const Post = ({picture , heart , textClass , sizeOfTrash , ...props}) => {
   return (
     <div {...props}>
        <div className="posts__content">
@@ -12,7 +12,7 @@ const Post = ({picture , heart , textClass , ...props}) => {
                       29.11.2022
                    </div>
                    <div className="posts__heart">
-                       <img src={heart} alt="" style={{cursor: 'pointer'}}/>
+                       <img src={heart} alt="" style={{cursor: 'pointer' , width: 30 , height: 30}}/>
                    </div>
                 </div>
                 <div className="posts__title">
