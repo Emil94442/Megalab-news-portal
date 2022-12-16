@@ -3,9 +3,10 @@
         width: 180px;
         min-height: 50px;
         
-        border: 1px solid black;
-        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.14);
+        background: #FFFFFF;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
         border-radius: 10px;
+        padding: 0.1px 0;
         .MenuStripes__profile-link {
             font-family: 'Ubuntu';
             font-style: normal;
@@ -17,6 +18,7 @@
             
             color: #000000;
             margin: 13px 0 8px 10px;
+            cursor: pointer;
         }
         .MenuStripes__line {
             width: 145px;
@@ -35,14 +37,15 @@
             
             color: #000000;
             margin: 8px 0px 12px 10px;
+            cursor: pointer;
         }
     }
     .MenuStripes__like-content {
         width: 180px;
         min-height: 50px;
         
-        border: 1px solid rgba(97, 97, 97, 0.637);
-        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.14);
+        background: #FFFFFF;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
         border-radius: 10px;
         margin-top: 20px;
         .MenuStripes__like-title {
@@ -50,12 +53,13 @@
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
-            line-height: 150%;
+            line-height: 290%;
             /* identical to box height, or 24px */
             
             
             color: #000000;
-            margin: 13px 14px 17px 10px;
+            margin: 15px 14px 17px 12px;
+            cursor: pointer;
         }
     }
 }

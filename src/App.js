@@ -8,6 +8,8 @@ import LikePage from './Components/likePage/LikePage';
 import MainPage from './Components/MainPage/MainPage';
 import ProfilePage from './Components/ProfilePage/ProfilePage';
 import CreatePost from './Components/CreatePost/CreatePost';
+import Autorization from './Components/authorization/Autorization';
+import InnerPage from './Components/InnerPage/InnerPage';
 
 function App() {
 
@@ -26,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-        <CreatePost/>
+        <Share/>
     </div>
   );
 }

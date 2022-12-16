@@ -7,7 +7,7 @@ const Share = () => {
         <div className="share__content">
            <div className="share__block-one">
               <div className="share__title">Поделиться</div>
-              <img src="Images/Share/exit.svg" alt="" style={{cursor: 'pointer'}}/>
+              <img src="Images/Share/exit.svg" alt="" style={{position: 'relative' , bottom: 6 ,cursor: 'pointer'}}/>
            </div>
            <div className="share__block-two">
               <img src="Images/Share/telegram.svg" alt="" style={{cursor: 'pointer'}}/>
