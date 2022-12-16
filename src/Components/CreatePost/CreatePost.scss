@@ -1,0 +1,152 @@
+.cp {
+    .cp__content {
+        width: 537px;
+        height: 541px;
+        background: #FFFFFF;
+        box-shadow: 0px 3px 26px rgba(0, 0, 0, 0.14);
+        border-radius: 15px;
+        margin: 0 auto;
+        margin-top: 100px;
+        .cp__x-img {
+            margin: 11px 20px 0px 487px;
+            position: relative;
+            top: 11px;
+        }
+        .cp__download-content {
+            width: 437px;
+            height: 467px;
+          //  border: 2px solid red;
+            margin: 0 auto;
+            margin-top: 10px;
+            .cp__form-block-one {
+                display: flex;
+                margin-top: 28px;
+                width: 100%;
+                height: 33px;
+               // border: 2px solid teal;
+                .cp__form-text {
+                    align-self: flex-end;
+                    color: #000000;
+                    font-family: 'Ubuntu';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 21px;
+                }
+                .cp__download-button {
+                    cursor: pointer;
+                    margin-left: 32px;
+                }
+            }
+            .cp__form-block-one:first-child {
+                margin-top: 0px;
+            }
+            .cp__form-block-one:nth-child(2) {
+                display: flex;
+                align-items: center;
+                height: 35px;
+                .cp__form-text {
+                    align-self: center;
+                }
+                .cp__input {
+                    width: 263px;
+                    height: 35px;
+                    margin-left: 87px;
+                    border: 1px solid #DEDCE4;
+                    border-radius: 5px;
+                }
+            }
+            .cp__form-block-one:nth-child(3) {
+                display: flex;
+                align-items: center;
+                height: 35px;
+                .cp__form-text {
+                    align-self: center;
+                }
+                .cp__input {
+                    width: 263px;
+                    height: 35px;
+                    margin-left: 29px;
+                    border: 1px solid #DEDCE4;
+                    border-radius: 5px;
+                }
+            }
+            .cp__form-block-one:nth-child(4) {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                height: 95px;
+                .cp__form-text {
+                    align-self: flex-start;
+                    margin-top: 6px;
+                }
+                .cp__input-content {
+                    .cp__input {
+                        width: 263px;
+                        height: 95px;
+                        border: 1px solid #DEDCE4;
+                        border-radius: 5px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+            .cp__form-block-one:nth-child(5) {
+                display: flex;
+                height: 35px;
+                margin-top: 19px;
+                .cp__form-text {
+                    align-self: center;
+                }
+                .cp__select-content {
+                    select {
+                        width: 263px;
+                        height: 35px;
+                        border: 1px solid #DEDCE4;
+                        border-radius: 5px;
+                        margin-left: 15px;
+                    }
+                    img {
+                        position: relative;
+                        top: 100px;
+                    }
+                }
+            }
+            .cp__not-selected-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 137px;
+                height: 38px;
+                background: #FFFFFF;
+                box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.16);
+                border-radius: 10px;
+                margin-top: 17px;
+                font-family: 'Ubuntu';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 18px;
+                
+                color: #000000;
+            }
+            .cp__button-creater {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 191px;
+                height: 30px;
+                background: #7E5BC2;
+                border-radius: 10px;
+                color: #FFFFFF;
+                font-family: 'Ubuntu';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 18px;
+                margin: 0 auto;
+                margin-top: 45px;
+                cursor: pointer;
+            }
+        }
+    }
+}
