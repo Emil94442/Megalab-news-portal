@@ -1,8 +1,71 @@
 import React from 'react'
 import './MainPart.scss'
 import Post from './Post/Post'
+import axios from 'axios'
+import { useState , useEffect } from 'react'
 
 const MainPart = () => {
+
+  const [posts , setPosts] = useState()
+
+  const loadDate = async () => {
+    const body = {
+      'nickname': 'Emil_2005',
+      'password': '123_qwerty'
+    }
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+    
+    const data = await fetch('https://megalab.pythonanywhere.com/login/', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: headers
+    })
+    const response = await data.json()
+      
+
+    /*.then(response => response.json())
+    .then(json => setPosts(json))*/
+    console.log(posts)
+
+    
+
+  }
+
+  const userPost = async () => {
+    const accessToken = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+
+    const authAxios = axios.create({
+      baseURL: `https://megalab.pythonanywhere.com/post/`,
+      headers: {
+        Authorization: `Token ${accessToken}`
+      }
+    })
+
+    const fetchTodo = async () => {
+      try {
+        const result = await authAxios.get(`https://megalab.pythonanywhere.com/post/`)
+        setPosts(result.data)
+        console.log(posts)
+      } catch (e) {
+        setPosts(e.message)
+      }
+    }
+
+    fetchTodo()
+}
+
+
+useEffect(() => {
+    loadDate()
+    userPost()
+}, [])
+
+
+
   return (
     <div className='MainPart'>
         <div className="MainPart__content">
@@ -36,11 +99,13 @@ const MainPart = () => {
             </div>
 
             <div className="MainPart__posts posts">  
-                <Post picture="Images/Header/Main__one-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'}/>
-                <Post picture="Images/Header/Main__two-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
-                <Post picture="Images/Header/Main__three-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
-                <Post picture="Images/Header/Main__four-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
-                <Post picture="Images/Header/Main__five-img.jpg" heart='Images/InnerPage/heart.svg' textClass={'posts__text-content'} style={{marginTop: 16}}/>
+                <Post 
+                  picture="Images/Header/Main__one-img.jpg" 
+                  heart='Images/InnerPage/heart.svg' 
+                  textClass={'posts__text-content'}
+                  posts={posts}
+                />
+
             </div>
         </div>
     </div>

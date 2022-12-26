@@ -1,7 +1,7 @@
 import React from 'react'
 import './Post.scss'
 
-const Post = ({picture , heart , textClass , sizeOfTrash , ...props}) => {
+const Post = ({picture , heart , textClass , sizeOfTrash , posts , ...props}) => {
   return (
     <div {...props}>
        <div className="posts__content">
@@ -16,10 +16,10 @@ const Post = ({picture , heart , textClass , sizeOfTrash , ...props}) => {
                    </div>
                 </div>
                 <div className="posts__title">
-                   Заголовок новости
+                   {posts.title}
                 </div>
                 <div className="posts__text">
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                   {posts.text}
                 </div>
                 <div className="posts__read-more">
                    Читать дальше >>
