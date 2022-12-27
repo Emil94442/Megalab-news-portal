@@ -6,7 +6,7 @@ import { useState , useEffect } from 'react'
 
 const MainPart = () => {
 
-  const [posts , setPosts] = useState()
+  const [posts , setPosts] = useState([])
 
   const loadDate = async () => {
     const body = {
@@ -29,14 +29,15 @@ const MainPart = () => {
 
     /*.then(response => response.json())
     .then(json => setPosts(json))*/
-    console.log(posts)
+    console.log(response)
 
     
 
   }
 
   const userPost = async () => {
-    const accessToken = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    /*const accessToken = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const accessTokenTwo = '3faad9bce6cbbfff743948885b938cddddf74703'
 
     const authAxios = axios.create({
       baseURL: `https://megalab.pythonanywhere.com/post/`,
@@ -55,12 +56,42 @@ const MainPart = () => {
       }
     }
 
+    fetchTodo()*/
+
+    
+
+
+
+    const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const apiMe = 'https://megalab.pythonanywhere.com/post/'
+
+    const authAxios = axios.create({
+      baseURL: apiMe,
+      headers: {
+        Authorization: `Token ${accessTokenTwo}`
+      }
+    })
+
+    const fetchTodo = async () => {
+      try {
+        const result = await authAxios.get(``)
+        setPosts(result.data)
+        console.log(posts)
+      } catch (e) {
+        setPosts(e.message)
+      }
+      finally {
+        
+      }
+    }
+
     fetchTodo()
 }
 
 
 useEffect(() => {
-    loadDate()
+
+    
     userPost()
 }, [])
 
@@ -99,13 +130,20 @@ useEffect(() => {
             </div>
 
             <div className="MainPart__posts posts">  
-                <Post 
+                {/*<Post 
                   picture="Images/Header/Main__one-img.jpg" 
                   heart='Images/InnerPage/heart.svg' 
                   textClass={'posts__text-content'}
                   posts={posts}
-                />
-
+  />*/}
+                {posts.map(post =>
+                   <Post 
+                   picture="Images/Header/Main__one-img.jpg" 
+                   heart='Images/InnerPage/heart.svg' 
+                   textClass={'posts__text-content'}
+                   posts={post}
+                 />
+                )}
             </div>
         </div>
     </div>

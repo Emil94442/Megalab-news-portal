@@ -12,6 +12,7 @@ import Autorization from './Components/authorization/Autorization';
 import InnerPage from './Components/InnerPage/InnerPage';
 import axios from 'axios'
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 function App() {
 
@@ -31,14 +32,12 @@ function App() {
   // token: 8c73618d1b186a1ecc882ba7f6a6aa91de452c78
 
   
-
-  
-
+  const verifiedRegistration = useSelector(state => state.verifReducer.verifiedRegistration)
   
 
   return (
     <div className="App">
-        <MainPage/>
+        {verifiedRegistration ? <Autorization/> : <Registration/>}
     </div>
   );
 }
