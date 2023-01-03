@@ -13,6 +13,7 @@ import InnerPage from './Components/InnerPage/InnerPage';
 import axios from 'axios'
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -36,9 +37,18 @@ function App() {
   
 
   return (
-    <div className="App">
-        {verifiedRegistration ? <Autorization/> : <Registration/>}
-    </div>
+    <BrowserRouter>
+       <div className="App">
+          {/*verifiedRegistration ? <Autorization/> : <Registration/>*/}
+          <Routes>
+            <Route path='/Registration' element={<Registration/>}/>
+            <Route path='/Autorization' element={<Autorization/>}/>
+            <Route path='/MainPage' element={<MainPage/>}/>
+            <Route path='/LikePage' element={<LikePage/>}/>
+            <Route path='/InnerPage/:id' element={<InnerPage/>}/>
+          </Routes>
+       </div>
+    </BrowserRouter>
   );
 }
 

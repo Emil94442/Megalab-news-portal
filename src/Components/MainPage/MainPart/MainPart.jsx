@@ -7,6 +7,8 @@ import { useState , useEffect } from 'react'
 const MainPart = () => {
 
   const [posts , setPosts] = useState([])
+  const [loading , setLoading] = useState(false)
+  const [seconds , setSeconds] = useState(0)
 
   const loadDate = async () => {
     const body = {
@@ -61,7 +63,6 @@ const MainPart = () => {
     
 
 
-
     const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
     const apiMe = 'https://megalab.pythonanywhere.com/post/'
 
@@ -74,6 +75,7 @@ const MainPart = () => {
 
     const fetchTodo = async () => {
       try {
+        setLoading(true)
         const result = await authAxios.get(``)
         setPosts(result.data)
         console.log(posts)
@@ -81,7 +83,7 @@ const MainPart = () => {
         setPosts(e.message)
       }
       finally {
-        
+        setLoading(false)
       }
     }
 
@@ -94,6 +96,15 @@ useEffect(() => {
     
     userPost()
 }, [])
+
+useEffect(() => {
+  let interval = setInterval(() => {
+     setSeconds((seconds) => seconds + 1)
+  }, 1000)
+
+  return () => clearInterval(interval)
+
+} , [seconds])
 
 
 
@@ -136,14 +147,19 @@ useEffect(() => {
                   textClass={'posts__text-content'}
                   posts={posts}
   />*/}
-                {posts.map(post =>
-                   <Post 
-                   picture="Images/Header/Main__one-img.jpg" 
-                   heart='Images/InnerPage/heart.svg' 
-                   textClass={'posts__text-content'}
-                   posts={post}
-                 />
-                )}
+                {loading
+                 ? <h1>Идёт загрузка постов {seconds} сек</h1>
+
+                 : posts.map(post =>
+                     <Post 
+                        picture="Images/Header/Main__one-img.jpg" 
+                        heart='Images/InnerPage/heart.svg' 
+                        textClass={'posts__text-content'}
+                        posts={post}
+                        style={{marginTop: 16}}
+                      />
+               )
+            }
             </div>
         </div>
     </div>

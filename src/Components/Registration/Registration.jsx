@@ -2,7 +2,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeInputRegLastName, changeInputRegName, changeInputRegNickName, changeInputRegPassword, changeInputRegPassword2, verifiedReg } from '../../redux/action'
+import { useNavigate } from 'react-router-dom'
+import { changeInputRegLastName, changeInputRegName, changeInputRegNickName, changeInputRegPassword, changeInputRegPassword2, ErrorLastName, ErrorLastNameOff, ErrorName, ErrorNameOff, ErrorNickname, ErrorNicknameOff, ErrorNicknameText, LessThan8, nicknameRegistrated, PasswordErrOf, similarPassword, verifiedReg } from '../../redux/action'
 import './Registration.scss'
 import TitleMegalab from './titleMegalab/TitleMegalab'
 
@@ -20,7 +21,19 @@ const Registration = () => {
   const [password , setPassword] = useState('')
   const [password2 , setPassword2] = useState('')
 
+  const [passRegistrated , setPassRegistrated] = useState(false)
+
+  const errorLastName = useSelector(state => state.verifReducer.errorLastNameOfReg)
+  const errorNameOfReg = useSelector(state => state.verifReducer.errorNameOfReg)
+  const errorNicknameOfReg = useSelector(state => state.verifReducer.errorNicknameOfReg)
+  const errorNicknameTextOfReg = useSelector(state => state.verifReducer.errorNicknameTextOfReg)
+  const similarPasswordErr = useSelector(state => state.verifReducer.similarPasswordErr)
+  const errorPasswordOfReg = useSelector(state => state.verifReducer.errorPasswordOfReg)
+  const NicknameRegistrated = useSelector(state => state.verifReducer.NicknameRegistrated)
+
   const dispatch = useDispatch()
+
+  const navigate = useNavigate()
 
   const loadDate = async () => {
    const body = {
@@ -48,43 +61,154 @@ const Registration = () => {
    .then(json => setPosts(json))*/
    console.log(response)
    
-   dispatch(verifiedReg())
    
 
- }
+   if (!last_name) {
+      dispatch(ErrorLastName())
+   } else {
+      dispatch(ErrorLastNameOff())
+   }
 
+   if (!name) {
+      dispatch(ErrorName())
+   } else {
+      dispatch(ErrorNameOff())
+   }
+
+   if (!nickname) {
+      dispatch(ErrorNickname())
+   } else {
+      dispatch(ErrorNicknameOff())
+   }
+
+   if (password !== password2 && password.length < 8) {
+      dispatch(similarPassword())
+   } else {
+      dispatch(PasswordErrOf())
+   }
+
+   if (password !== password2) {
+      dispatch(similarPassword())
+   }
+   
+   if (password.length < 8) {
+      dispatch(similarPassword())
+   }
+
+
+   if (name && last_name && nickname && password === password2 && password2.length >= 8 && !passRegistrated) {
+      navigate('/Autorization')
+   }
+
+   if (response.nickname.includes('user with this nickname already exists.')) {
+      dispatch(ErrorNicknameText())
+      // dispatch(nicknameRegistrated())
+      setPassRegistrated(true)
+      console.log('Сработало пролверкаsqsq')
+   }
+   
+}
+  
+ 
   useEffect(() => {
-     
+     if (localStorage.getItem('Registrated')) {
+      // dispatch(verifiedReg())
+     }
   }, [])
+
+  const marginTop = (row) => {
+   if (errorLastName && row === 'row-1') {
+      return {
+        marginTop: 30
+      }
+    }
+
+   if (errorNameOfReg && row === 'row-2') {
+      return {
+        marginTop: 30
+      }
+    }
+
+   if (similarPasswordErr && row === 'button') {
+      return {
+        marginTop: 30
+      }
+    }
+  }
+
+  
+
+  const heightContent = () => {
+   
+
+   if (similarPasswordErr) {
+      return {
+        minHeight: 550
+      }
+    }
+
+   if (errorNameOfReg && errorLastName) {
+      return {
+        minHeight: 523
+      }
+    }
+  }
+
+  const passErrFunc = () => {
+    if (similarPasswordErr) {
+       
+    }
+  }
 
   return (
     <div className='Registration'>
-      <div className="Registration__content">
+      <div className="Registration__content" style={heightContent()}>
         <div className="Registration__row-1">
          <br />
            <TitleMegalab style={{position: 'relative' , bottom: 7}}/>
            <div className="Registration__form">
                <div className="Registration__form-one form-one">
                   <div className="form-one__text">Фамилия</div>
-                  <input 
-                     type="text" 
-                     className='form-one__input' 
-                     value={last_name} 
-                     onChange={e => setLast_name(e.target.value)}
-                  />
+                  <div className="form-one__input-details">
+                     <input 
+                        type="text" 
+                        className='form-one__input' 
+                        value={last_name} 
+                        onChange={e => setLast_name(e.target.value)}
+                     />
+                     {errorLastName && (
+                        <p style={{color: 'red', marginBottom: -20}}>введите фамилию пожалуйста</p>
+                     )}
+                  </div>
+                  
                </div>
-               <div className="Registration__form-one form-one">
+               <div className="Registration__form-one form-one" style={marginTop('row-1')}>
                   <div className="form-one__text">Имя</div>
-                  <input type="text" className='form-one__input' value={name} onChange={e => setName(e.target.value)}/>
+                  <div className="form-one__input-details">
+                     <input 
+                        type="text" 
+                        className='form-one__input' 
+                        value={name} 
+                        onChange={e => setName(e.target.value)}
+                     />
+                     {errorNameOfReg && (
+                        <p style={{color: 'red', marginBottom: -20}}>введите имя пожалуйста</p>
+                     )}
+                  </div>
                </div>
-               <div className="Registration__form-one form-one">
+               <div className="Registration__form-one form-one" style={marginTop('row-2')}>
                   <div className="form-one__text">Никнейм</div>
-                  <input 
-                  type="text" 
-                  className='form-one__input' 
-                  value={nickname} 
-                  onChange={e => setNickname(e.target.value)}
-               />
+                  <div className="form-one__input-details">
+                     <input 
+                        type="text" 
+                        className='form-one__input' 
+                        value={nickname} 
+                        onChange={e => setNickname(e.target.value)}
+                     />
+                     {errorNicknameOfReg && (
+                        <p style={{color: 'red', marginBottom: -20}}>{errorNicknameTextOfReg}</p>
+                     )}
+                  </div>
                </div>
                <div className="Registration__form-one form-one">
                   <div className="form-one__text">Пароль</div>
@@ -95,16 +219,26 @@ const Registration = () => {
                </div>
                <div className="Registration__form-one form-one">
                   <div className="form-one__text">Подтверждение пароля</div>
-                  <input type="text" className='form-one__input' value={password2} onChange={e => setPassword2(e.target.value)}/>
+                  <div className="form-one__input-details" style={{marginLeft: '84px'}}>
+                     <input 
+                        type="text" 
+                        className='form-one__input' 
+                        value={password2} 
+                        onChange={e => setPassword2(e.target.value)}
+                     />
+                     {similarPasswordErr && (
+                        <p style={{color: 'red', marginBottom: -55}}>{errorPasswordOfReg}</p>
+                     )}
+                  </div>
                </div>
            </div> 
         </div>
-        <div className="Registration__row-2">
+        <div className="Registration__row-2" style={marginTop('button')}>
             <div className="Registration__button" onClick={loadDate}>
               <span>Регистрация</span>
             </div>
             <div className="Registration__have-acc">
-               Уже есть логин? <span>Войти</span>
+               Уже есть логин? <span onClick={() => navigate('/Autorization')}>Войти</span>
             </div>
         </div>
       </div>

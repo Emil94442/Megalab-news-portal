@@ -1,4 +1,13 @@
 .Autorization {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.507);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
     .Autorization__content {
         display: flex;
         flex-direction: column;

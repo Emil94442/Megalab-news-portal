@@ -1,9 +1,37 @@
+import axios from 'axios'
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import Post from '../../MainPage/MainPart/Post/Post'
 import './LikePageContent.scss'
 import Menu from './Menu/Menu'
 
 const LikePageContent = () => {
+
+  const [likePosts , setLikePosts] = useState([])
+
+
+  const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+  const apiMe = 'https://megalab.pythonanywhere.com/like/'
+
+  const authAxios = axios.create({
+    baseURL: apiMe,
+    headers: {
+      Authorization: `Token ${accessTokenTwo}`
+    }
+  })
+
+  const loadLikePosts = async () => {
+      const loadPosts = await authAxios.get(``)
+      setLikePosts(loadPosts.data)
+      console.log(likePosts)
+  }
+
+  useEffect(() => {
+    loadLikePosts()
+  }, [])
+  
+
   return (
     <div className='lpc'>
        <div className="lpc__content">
@@ -11,7 +39,16 @@ const LikePageContent = () => {
 
             <div className="lpc__block-main">
                 <div className="lpc__title">Избранные новости</div>
-                <Post
+                {likePosts.map(post =>
+                     <Post
+                        picture="Images/Header/Main__one-img.jpg" 
+                        heart='Images/InnerPage/heart.svg' 
+                        textClass={'posts__text-content like'} 
+                        posts={post}
+                        style={{marginTop: 16}}
+                     />
+               )}
+                {/*<Post
                     picture="Images/Header/Main__one-img.jpg" 
                     heart='Images/LikePage/red-heart.svg' 
                     textClass={'posts__text-content like'} 
@@ -40,7 +77,7 @@ const LikePageContent = () => {
                    heart='Images/LikePage/red-heart.svg' 
                    textClass={'posts__text-content like'} 
                    style={{marginTop: 16}}
-                />
+                />*/}
             </div>
        </div>
     </div>

@@ -10,7 +10,7 @@
     position: fixed;
     .Registration__content {
         width: 527px;
-        height: 496px;
+        min-height: 506px;
 
         
         background: #FFFFFF;
@@ -49,6 +49,15 @@
                 }
                 .Registration__form-one:first-child {
                     margin-top: 0px;
+                    .form-one__input-details {
+                        
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                .Registration__form-one:nth-child(2) {
+                    //margin-top: 30px;
+                    
                 }
                 .Registration__form-one:nth-child(4) {
                     .form-one__input-details {

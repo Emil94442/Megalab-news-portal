@@ -1,8 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import MegalabTitle from '../Header/MegalabTitle/MegalabTitle'
 import './Footer.scss'
 
 const Footer = ({...props}) => {
+
+  const navigate = useNavigate()
+
   return (
     <footer className='footer' {...props}>
         <div className="footer__content">
@@ -13,7 +17,7 @@ const Footer = ({...props}) => {
                 <div className="footer__link-profile">
                    Мой профиль
                 </div>
-                <div className="footer__likes-news">
+                <div className="footer__likes-news" onClick={() => navigate('/LikePage')}>
                    Избранные новости
                 </div>
             </div>
