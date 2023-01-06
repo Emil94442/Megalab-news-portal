@@ -51,9 +51,10 @@ useEffect(() => {
 
   return (
     <div className='InnerPage'>
-        <Header/>
-        <InnerPageContent post={post} arrowLeft="Images/InnerPage/arrow-left.svg"/>
-        <Footer style={{}}/>
+        {loading
+         ? <h1>Загрузка...</h1>
+         : <InnerPageThis post={post} setPost={setPost} params={params.id}/>
+        }
 
     </div>
   )

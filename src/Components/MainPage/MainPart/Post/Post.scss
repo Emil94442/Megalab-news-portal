@@ -1,7 +1,7 @@
 .posts__content {
     display: flex;
     width: 100%;
-    min-height: 201px;
+    height: 201px;
     overflow: auto;
     //border: 2px solid black;
     margin-top: 16px;
@@ -50,6 +50,8 @@
             
             color: #858080;
             margin-top: 8px;
+            height: 43px;
+            overflow: hidden;
         }
         .posts__read-more {
             font-family: 'Ubuntu';
