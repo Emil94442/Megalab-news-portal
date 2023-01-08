@@ -3,12 +3,17 @@ import './MainPart.scss'
 import Post from './Post/Post'
 import axios from 'axios'
 import { useState , useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const MainPart = () => {
 
   const [posts , setPosts] = useState([])
   const [loading , setLoading] = useState(false)
   const [seconds , setSeconds] = useState(0)
+  const MyToken = useSelector(state => state.globalReducer.MyToken)
+
+  const navigate = useNavigate()
 
   const loadDate = async () => {
     const body = {
@@ -61,9 +66,9 @@ const MainPart = () => {
     fetchTodo()*/
 
     
+    
 
-
-    const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const accessTokenTwo = localStorage.getItem('token')
     const apiMe = 'https://megalab.pythonanywhere.com/post/'
 
     const authAxios = axios.create({
@@ -106,7 +111,15 @@ useEffect(() => {
 
 } , [seconds])
 
-
+   
+  const exitFromAccount = () => {
+    localStorage.removeItem('nickname')
+    localStorage.removeItem('last_name')
+    localStorage.removeItem('name')
+    localStorage.removeItem('password')
+    localStorage.removeItem('token')
+    navigate(`/Registration`)
+  }
 
   return (
     <div className='MainPart'>
@@ -150,7 +163,7 @@ useEffect(() => {
                 {loading
                  ? <h1>Идёт загрузка постов {seconds} сек</h1>
 
-                 : posts.map(post =>
+                 : posts && posts.map(post =>
                      <Post 
                         picture="Images/Header/Main__one-img.jpg" 
                         heart='Images/InnerPage/heart.svg' 
@@ -162,6 +175,7 @@ useEffect(() => {
             }
             </div>
         </div>
+        <h1 onClick={exitFromAccount}>Выйти</h1>
     </div>
   )
 }

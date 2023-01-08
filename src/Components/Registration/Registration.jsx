@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { changeInputRegLastName, changeInputRegName, changeInputRegNickName, changeInputRegPassword, changeInputRegPassword2, ErrorLastName, ErrorLastNameOff, ErrorName, ErrorNameOff, ErrorNickname, ErrorNicknameOff, ErrorNicknameText, LessThan8, nicknameRegistrated, PasswordErrOf, similarPassword, verifiedReg } from '../../redux/action'
+import { changeInputRegLastName, changeInputRegName, changeInputRegNickName, changeInputRegPassword, changeInputRegPassword2, ErrorLastName, ErrorLastNameOff, ErrorName, ErrorNameOff, ErrorNickname, ErrorNicknameOff, ErrorNicknameText, LessThan8, nicknameAction, nicknameRegistrated, PasswordErrOf, similarPassword, verifiedReg } from '../../redux/action'
 import './Registration.scss'
 import TitleMegalab from './titleMegalab/TitleMegalab'
 
@@ -34,6 +34,8 @@ const Registration = () => {
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
+
+  localStorage.removeItem('token')
 
   const loadDate = async () => {
    const body = {
@@ -98,6 +100,11 @@ const Registration = () => {
 
    if (name && last_name && nickname && password === password2 && password2.length >= 8 && !passRegistrated) {
       navigate('/Autorization')
+      localStorage.setItem('last_name' , last_name)
+      localStorage.setItem('name' , name)
+      localStorage.setItem('nickname' , nickname)
+      localStorage.setItem('password' , password)
+      dispatch(nicknameAction(nickname))
    }
 
    if (response.nickname.includes('user with this nickname already exists.')) {

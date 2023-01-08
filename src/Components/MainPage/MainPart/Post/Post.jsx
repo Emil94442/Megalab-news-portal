@@ -15,7 +15,7 @@ const Post = ({picture , heart , textClass , sizeOfTrash , posts , ...props}) =>
 
       setHeard(true)
 
-    const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const accessTokenTwo = localStorage.getItem('token')
     const apiMe = 'https://megalab.pythonanywhere.com/like/'
 
       const authAxios = axios.create({

@@ -46,6 +46,7 @@ function App() {
             <Route path='/MainPage' element={<MainPage/>}/>
             <Route path='/LikePage' element={<LikePage/>}/>
             <Route path='/InnerPage/:id' element={<InnerPage/>}/>
+            <Route path='/Profile' element={<ProfilePage/>}/>
           </Routes>
        </div>
     </BrowserRouter>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { tokenAction } from '../../redux/action'
 import FormInput from '../Registration/FormInput/FormInput'
 import TitleMegalab from '../Registration/titleMegalab/TitleMegalab'
 import './Autorization.scss'
@@ -10,6 +12,12 @@ const Autorization = () => {
   const [password , setPassword] = useState('')
 
   const [errorLogin , setErrorLogin] = useState(false)
+
+  const MyToken = useSelector(state => state.globalReducer.MyToken)
+
+  
+
+  const dispatch = useDispatch()
 
   const verifingAutorization = async () => {
 
@@ -39,6 +47,9 @@ const Autorization = () => {
       }
 
       if (typeof jsonData.token === 'string') {
+        console.log(jsonData.token)
+        dispatch(tokenAction(jsonData.token))
+        localStorage.setItem('token' , jsonData.token)
         navigate('/MainPage')
       }
       console.log(jsonData)

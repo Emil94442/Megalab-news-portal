@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Footer from '../Moleculas/Footer/Footer'
 import Header from '../Moleculas/Header/Header'
@@ -14,9 +15,10 @@ const InnerPage = () => {
 
   const [loading, setLoading] = useState()
   const [post , setPost] = useState({})
+  const MyToken = useSelector(state => state.globalReducer.MyToken)
 
   const fetchLoad = () => {
-    const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const accessTokenTwo = localStorage.getItem('token')
     const apiMe = `https://megalab.pythonanywhere.com/post/${params.id}`
 
     const authAxios = axios.create({

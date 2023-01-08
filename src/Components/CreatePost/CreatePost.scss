@@ -1,16 +1,26 @@
 .cp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.61);
+    z-index: 15;
     .cp__content {
         width: 537px;
         height: 541px;
         background: #FFFFFF;
         box-shadow: 0px 3px 26px rgba(0, 0, 0, 0.14);
         border-radius: 15px;
-        margin: 0 auto;
-        margin-top: 100px;
+        
         .cp__x-img {
             margin: 11px 20px 0px 487px;
             position: relative;
             top: 11px;
+            cursor: pointer;
         }
         .cp__download-content {
             width: 437px;
@@ -108,6 +118,13 @@
                     img {
                         position: relative;
                         top: 100px;
+                    }
+                    input {
+                        width: 263px;
+                        height: 35px;
+                        border: 1px solid #DEDCE4;
+                        border-radius: 5px;
+                        margin-left: 15px;
                     }
                 }
             }

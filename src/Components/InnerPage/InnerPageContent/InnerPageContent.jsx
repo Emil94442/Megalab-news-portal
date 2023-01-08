@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Comment from './Comment/Comment'
 import CommentReply from './CommentReply/CommentReply'
@@ -15,7 +16,7 @@ const InnerPageContent = ({post , setPost}) => {
   const [text, setText] = useState('')
   const [postComment , setPostComment] = useState(post.comment)
   const [obgId, setObgId] = useState({})
-
+  const MyToken = useSelector(state => state.globalReducer.MyToken)
   
 
   const addComment = async () => {
@@ -23,9 +24,9 @@ const InnerPageContent = ({post , setPost}) => {
         "id": Date.now(),
         "user": {
             "id": Date.now(),
-            "nickname": "brawl_starssszzzz",
-            "name": "dolos",
-            "last_name": "10_rangss",
+            "nickname": localStorage.getItem('nickname'),
+            "name": localStorage.getItem('name'),
+            "last_name": localStorage.getItem('last_name'),
             "profile_image": null
         },
         "text": text,
@@ -38,7 +39,7 @@ const InnerPageContent = ({post , setPost}) => {
 
 
 
-    const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const accessTokenTwo = localStorage.getItem('token')
     const apiMe = 'https://megalab.pythonanywhere.com/comment/'
 
       const authAxios = axios.create({

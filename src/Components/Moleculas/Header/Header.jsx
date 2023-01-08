@@ -1,7 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Header.scss'
 
 const Header = () => {
+
+  const navigate = useNavigate()
+
   return (
     <header className="header">
         <div className="header__content">
@@ -29,7 +33,7 @@ const Header = () => {
             <div className="header__block">
                 <div className="header__menu">
                     <img src="/Images/Header/My-search.svg" alt="search" />
-                    <img src="/Images/Header/My-user.svg" alt="user" className='header__user-img'/>
+                    <img src="/Images/Header/My-user.svg" alt="user" className='header__user-img' onClick={() => navigate(`/Profile`)}/>
                     <img src="/Images/Header/My-burger-menu.svg" alt="burger-menu" />
                 </div>
             </div>

@@ -1,11 +1,48 @@
+import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
 import './CreatePost.scss'
 
-const CreatePost = () => {
+const CreatePost = ({modal , setModal , myPosts , setMyPosts}) => {
+  
+  const [image, setImage] = useState(null)
+  const [title, setTitle] = useState('')
+  const [text, setText] = useState('')
+  const [short_desc, setShort_desc] = useState('')
+  const [tag, setTag] = useState('')
+  
+  
+  const NewPostCreate = async () => {
+        const MyToken = localStorage.getItem('token')
+        const apiMe = 'https://megalab.pythonanywhere.com/post/'
+
+        const authAxios = axios.create({
+            baseURL: apiMe,
+            headers: {
+                Authorization: `Token ${MyToken}`
+            }
+        })
+
+        const body = {
+            title,
+            text,
+            image,
+            tag
+        }
+
+        console.log(body)
+
+        const axiosPostCreate = await authAxios.post(`` , body)
+        setMyPosts([...myPosts, body])
+        console.log(axiosPostCreate.data)
+        setModal(false)
+  }
+
   return (
-    <div className='cp'>
-        <div className="cp__content">
-            <div className="cp__x-img">
+    modal &&
+    <div className='cp' onClick={() => setModal(false)}>
+        <div className="cp__content" onClick={e => e.stopPropagation()}>
+            <div className="cp__x-img" onClick={() => setModal(false)}>
                 <img src="Images/createPost/x.svg" alt="" />
             </div>
             <div className="cp__download-content">
@@ -22,7 +59,7 @@ const CreatePost = () => {
                        Заголовок
                     </div>
                     <div className="cp__input-content">
-                        <input type="text" className='cp__input'/>
+                        <input type="text" className='cp__input' value={title} onChange={e => setTitle(e.target.value)}/>
                     </div>
                 </div>
                 <div className="cp__form-block-one">
@@ -30,7 +67,7 @@ const CreatePost = () => {
                        Краткое описание
                     </div>
                     <div className="cp__input-content">
-                        <input type="text" className='cp__input'/>
+                        <input type="text" className='cp__input' value={short_desc} onChange={e => setShort_desc(e.target.value)}/>
                     </div>
                 </div>
                 <div className="cp__form-block-one">
@@ -38,7 +75,7 @@ const CreatePost = () => {
                        Текст новости
                     </div>
                     <div className="cp__input-content">
-                        <input type="text" className='cp__input'/>
+                        <input type="text" className='cp__input' value={text} onChange={e => setText(e.target.value)}/>
                     </div>
                 </div>
                 <div className="cp__form-block-one">
@@ -46,15 +83,11 @@ const CreatePost = () => {
                        Выбрать категорию
                     </div>
                     <div className="cp__select-content">
-                        <select>
-                            <option value="not-selected">Не выбрано</option>
-                        </select>
+                        <input type="text" value={tag} onChange={e => setTag(e.target.value)}/>
                     </div>
                 </div>
-                <div className="cp__not-selected-button">
-                    #не выбрано
-                </div>
-                <div className="cp__button-creater">
+                
+                <div className="cp__button-creater" onClick={() => NewPostCreate()}>
                     Создать
                 </div>
             </div>

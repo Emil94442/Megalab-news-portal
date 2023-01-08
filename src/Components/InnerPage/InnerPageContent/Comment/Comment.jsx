@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import CommentReply from '../CommentReply/CommentReply'
 import './Comment.scss'
 
@@ -9,6 +10,7 @@ const Comment = ({comm , post , obg}) => {
 
   const [text, setText] = useState('')
   const [commentChild , setCommentChild] = useState(comm.child)
+  const MyToken = useSelector(state => state.globalReducer.MyToken)
 
   const addCommentReply = async () => {
     const newCommentReply = {
@@ -26,7 +28,7 @@ const Comment = ({comm , post , obg}) => {
     setCommentChild([...commentChild, newCommentReply])
     setText('')
 
-    const accessTokenTwo = '8c73618d1b186a1ecc882ba7f6a6aa91de452c78'
+    const accessTokenTwo = localStorage.getItem('token')
     const apiMe = 'https://megalab.pythonanywhere.com/comment/'
 
       const authAxios = axios.create({

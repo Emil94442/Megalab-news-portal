@@ -19,3 +19,7 @@ export const SIMILAR_PASSWORD = 'SIMILAR_PASSWORD'
 export const LESS_THAN_8 = 'LESS_THAN_8'
 
 export const PASSWORD_OFF = 'PASSWORD_OFF'
+
+export const TOKEN = 'TOKEN'
+
+export const NICKNAME = 'NICKNAME'

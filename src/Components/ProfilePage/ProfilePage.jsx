@@ -3,9 +3,12 @@ import './ProfilePage.scss'
 import Post from '../MainPage/MainPart/Post/Post'
 import Footer from '../Moleculas/Footer/Footer'
 import ProfilePageContent from './ProfilePageContent/ProfilePageContent'
+import { useEffect } from 'react'
 
 
 const ProfilePage = () => {
+
+
   return (
     <div className='ProfilePage'>
         <ProfilePageContent/>
