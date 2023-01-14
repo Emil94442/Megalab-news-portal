@@ -14,7 +14,7 @@ const Footer = ({...props}) => {
                 <MegalabTitle style={{marginTop: '37px'}}/>
             </div>
             <div className="footer__links">
-                <div className="footer__link-profile">
+                <div className="footer__link-profile" onClick={() => navigate('/Profile')}>
                    Мой профиль
                 </div>
                 <div className="footer__likes-news" onClick={() => navigate('/LikePage')}>

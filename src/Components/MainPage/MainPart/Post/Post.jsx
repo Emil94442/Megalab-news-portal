@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './Post.scss'
 
-const Post = ({picture , heart , textClass , sizeOfTrash , posts , ...props}) => {
+const Post = ({picture , heart , textClass , sizeOfTrash , posts , remove , ...props}) => {
 
   const navigate = useNavigate()
 
@@ -14,6 +15,8 @@ const Post = ({picture , heart , textClass , sizeOfTrash , posts , ...props}) =>
    if (!heard) {
 
       setHeard(true)
+
+      
 
     const accessTokenTwo = localStorage.getItem('token')
     const apiMe = 'https://megalab.pythonanywhere.com/like/'
@@ -41,8 +44,66 @@ const Post = ({picture , heart , textClass , sizeOfTrash , posts , ...props}) =>
       console.log(axiosLike)
    } else {
       setHeard(false)
+
+      const accessTokenTwo = localStorage.getItem('token')
+      const apiMe = 'https://megalab.pythonanywhere.com/like/'
+
+      const authAxios = axios.create({
+         baseURL: apiMe,
+         headers: {
+            Authorization: `Token ${accessTokenTwo}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+         }
+      })
+
+      const body = {
+         'post': posts.id
+      }
+
+      const headers = {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+       }
+
+      const likeFetch = await authAxios.post(`` , body)
+      const axiosLike = await likeFetch.data
+      console.log(axiosLike)
    }
   }
+
+  
+
+  const deletePost = async () => {
+
+     remove(posts)
+
+     const apiMe = `https://megalab.pythonanywhere.com/post/${posts.id}`
+     const MyToken = localStorage.getItem('token')
+
+     const authAxios = axios.create({
+      baseURL: apiMe,
+      headers: {
+         Authorization: `Token ${MyToken}`,
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+      }
+   })
+      
+      const DeletPostAxios = await authAxios.delete(``)
+      return DeletPostAxios  
+  }
+
+  
+  useEffect(() => {
+     if (posts.is_liked) {
+        setHeard(true)
+     } 
+
+     if (!posts.is_liked) {
+      setHeard(false)
+   } 
+  }, [])
 
 
   return (
@@ -54,8 +115,16 @@ const Post = ({picture , heart , textClass , sizeOfTrash , posts , ...props}) =>
                    <div className="posts__data">
                       29.11.2022
                    </div>
-                   <div className="posts__heart" onClick={changeHeart}>
-                       <img src={!heard ? heart : 'Images/LikePage/red-heart.svg'} alt="" style={{cursor: 'pointer' , width: 30 , height: 30}}/>
+                   <div className="posts__heart" onClick={!sizeOfTrash ? changeHeart : deletePost}>
+                       {!sizeOfTrash 
+                       ? (
+                        <img src={!heard ? heart : 'Images/LikePage/red-heart.svg'} alt="" style={{cursor: 'pointer' , width: 30 , height: 30}}/>
+                       )
+                       : (
+                        <img src={sizeOfTrash} alt="" style={{cursor: 'pointer' , width: 30 , height: 30}}/>
+                       )
+                     }
+                       
                    </div>
                 </div>
                 <div className="posts__title">

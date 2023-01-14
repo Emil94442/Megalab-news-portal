@@ -13,6 +13,9 @@ const ProfilePageContent = () => {
   const [modal, setModal] = useState(false)
   const [myPosts, setMyPosts] = useState([])
 
+
+
+
   const getUser = async () => {
 
     const MyToken = localStorage.getItem('token')
@@ -30,24 +33,32 @@ const ProfilePageContent = () => {
     console.log(user)
 
 
+    
+    const nickname = localStorage.getItem('nickname')
+    const apiMeV2 = `https://megalab.pythonanywhere.com/post/?author=${nickname}`
+
+    const authAxiosV2 = axios.create({
+        baseURL: apiMeV2,
+        headers: {
+            Authorization: `Token ${MyToken}`
+        }
+    })
+
+    const fetchMyCreatePost = await authAxiosV2.get(``)
+    setMyPosts(fetchMyCreatePost.data)
+
   }
 
-  
+  const removeItem = (p) => {
+    setMyPosts(myPosts.filter(post => post.id !== p.id))
+  }
+
 
   useEffect(() => {
     getUser()
   }, [])
 
-  useEffect(() => {
-    const raw = localStorage.getItem('myPosts')
-    setMyPosts(JSON.parse(raw))
-  }, [])
 
-  useEffect(() => {
-    localStorage.setItem('myPosts', JSON.stringify(myPosts))
-  }, [myPosts])
-  
-  
   const OpenModal = () => {
     setModal(true)
   }
@@ -105,15 +116,21 @@ const ProfilePageContent = () => {
                     Новая публикация
                 </div>
             </div>
-                {myPosts.map(post =>
+                {myPosts.length
+                 ? myPosts.map(post =>
                     <Post
                         picture="Images/Header/Main__one-img.jpg" 
                         heart='Images/InnerPage/heart.svg' 
-                        textClass={'posts__text-content'}
+                        textClass={'posts__text-content like'}
+                        sizeOfTrash={'/images/ProfilePage/trash.svg'}
                         posts={post}
+                        remove={removeItem}
                         style={{marginTop: 16}}
                     />
-                )}
+                )
+                : <h1 style={{textAlign: 'center'}}>Здесь нет постов</h1>
+                
+                }
                 {/*<Post
                     picture="Images/Header/Main__one-img.jpg" 
                     heart='Images/ProfilePage/trash.svg' 

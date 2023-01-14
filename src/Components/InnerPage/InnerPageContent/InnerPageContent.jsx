@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,10 @@ const InnerPageContent = ({post , setPost}) => {
   const [text, setText] = useState('')
   const [postComment , setPostComment] = useState(post.comment)
   const [obgId, setObgId] = useState({})
-  const MyToken = useSelector(state => state.globalReducer.MyToken)
+  const [heard, setHeard] = useState(false)
+
+  const heart = "/Images/InnerPage/heart.svg"
+  const redHeart = "/Images/LikePage/red-heart.svg"
   
 
   const addComment = async () => {
@@ -62,10 +65,73 @@ const InnerPageContent = ({post , setPost}) => {
       setObgId(responseComment.data)
   }
 
+
+  const changeHeart = async () => {
+    if (!heard) {
+ 
+       setHeard(true)
+ 
+     const accessTokenTwo = localStorage.getItem('token')
+     const apiMe = 'https://megalab.pythonanywhere.com/like/'
+ 
+       const authAxios = axios.create({
+          baseURL: apiMe,
+          headers: {
+             Authorization: `Token ${accessTokenTwo}`,
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+          }
+       })
+ 
+       const body = {
+          'post': post.id
+       }
+ 
+ 
+       const likeFetch = await authAxios.post(`` , body)
+       const axiosLike = await likeFetch.data
+       console.log(axiosLike)
+    } else {
+       setHeard(false)
+
+       const accessTokenTwo = localStorage.getItem('token')
+       const apiMe = 'https://megalab.pythonanywhere.com/like/'
+ 
+       const authAxios = axios.create({
+          baseURL: apiMe,
+          headers: {
+             Authorization: `Token ${accessTokenTwo}`,
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+          }
+       })
+ 
+       const body = {
+          'post': post.id
+       }
+ 
+ 
+       const likeFetch = await authAxios.post(`` , body)
+       const axiosLike = await likeFetch.data
+       console.log(axiosLike)
+    }
+   }
+
+   useEffect(() => {
+    if (post.is_liked) {
+        setHeard(true)
+     } 
+
+     if (!post.is_liked) {
+      setHeard(false)
+   } 
+   }, [])
+   
+
   return (
     <div className='inp' style={{marginBottom: 0}}>
         <div className="inp__content">
-            <div className="inp__arrow-left-img" onClick={() => navigate(`/mainPage`)}>
+            <div className="inp__arrow-left-img" onClick={() => navigate(-1)}>
 
 
 
@@ -83,8 +149,8 @@ const InnerPageContent = ({post , setPost}) => {
                    <div className="inp__data">29.11.2022</div>
                    <div className="inp__title">{post.title}</div>
                 </div>
-                <div className="inp__heart">
-                   <img src="/Images/InnerPage/heart.svg" alt="heart" />
+                <div className="inp__heart" onClick={changeHeart}>
+                   <img src={heard ? redHeart : heart} alt="heart" />
                 </div>
             </div>
 

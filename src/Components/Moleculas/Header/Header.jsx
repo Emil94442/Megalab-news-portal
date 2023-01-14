@@ -1,13 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Header.scss'
+import ModalMenu from '../Header/ModalMenu/ModalMenu'
+import { useState } from 'react'
 
 const Header = () => {
 
   const navigate = useNavigate()
 
+  const [modalMenu , setModalMenu] = useState(false)
+
   return (
     <header className="header">
+        <ModalMenu modalMenu={modalMenu} setModalMenu={setModalMenu}/>
         <div className="header__content">
 
             <div className="header__block">
@@ -32,9 +37,9 @@ const Header = () => {
 
             <div className="header__block">
                 <div className="header__menu">
-                    <img src="/Images/Header/My-search.svg" alt="search" />
-                    <img src="/Images/Header/My-user.svg" alt="user" className='header__user-img' onClick={() => navigate(`/Profile`)}/>
-                    <img src="/Images/Header/My-burger-menu.svg" alt="burger-menu" />
+                    <img src="/Images/Header/My-search.svg" alt="search" style={{cursor: 'pointer'}}/>
+                    <img src="/Images/Header/My-user.svg" alt="user" style={{cursor: 'pointer'}} className='header__user-img' onClick={() => navigate(`/Profile`)}/>
+                    <img src="/Images/Header/My-burger-menu.svg" alt="burger-menu" style={{cursor: 'pointer'}} onClick={() => setModalMenu(true)}/>
                 </div>
             </div>
 
