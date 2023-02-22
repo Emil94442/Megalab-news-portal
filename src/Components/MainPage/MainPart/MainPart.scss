@@ -1,15 +1,49 @@
 .MainPart {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    align-items: center;
+    .MainPart__search {
+        transition-duration: 0.5s;
+        display: flex;
+        align-items: center;
+        width: 520px;
+        height: 40px;
+        position: relative;
+        right: -10px;
+        transform: translate(0px, -440px);
+        .MainPart__search-input {
+            width: 100%;
+            height: 100%;
+        }
+        .MainPart__search-close {
+            position: relative;
+            right: 35px;
+            cursor: pointer;
+        }
+    }
+    .MainPart__search.visible {
+        transition-duration: 0.5s;
+        transform: translate(0,  -200px);
+    }
+    .MainPart__loading {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 200px;
+        margin: 0px 25px 0px 0px
+    }
     .MainPart__content {
         display: flex;
         justify-content: space-between;
         width: 1110px;
-        min-height: 700px;
+        min-height: 500px;
         // border: 2px solid red;
         margin: 0 auto;
         margin-top: 46px;
         .MainPart__options {
             width: 20%;
-            height: 300px;
+            min-height: 100px;
             // border: 2px solid green;
             .options__title {
                 font-style: normal;
@@ -21,28 +55,35 @@
                 
                 color: #000000;
             }
-            .options__checkbox-content {
-                display: flex;
-                font-family: 'Ubuntu';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 18px;
-                margin-top: 18.5px;
-                
-                color: #000000;
-
-                input {
-                    width: 21px;
-                    height: 21px;
+            .options__tags {
+                width: 100%;
+                height: 245px;
+                overflow: auto;
+                margin-top: 7px;
+                .options__checkbox-content {
+                    display: flex;
+                    font-family: 'Ubuntu';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 18px;
+                    margin-top: 18.5px;
                     
-                    border: 1px solid #000000;
-                    border-radius: 5px;
-                }
-                .options__title-checkbox {
-                    margin-left: 18px;
+                    color: #000000;
+    
+                    input {
+                        width: 21px;
+                        height: 21px;
+                        
+                        border: 1px solid #000000;
+                        border-radius: 5px;
+                    }
+                    .options__title-checkbox {
+                        margin-left: 18px;
+                    }
                 }
             }
+            
             .options__button {
                 display: flex;
                 flex-direction: row;
@@ -60,12 +101,13 @@
                 line-height: 18px;
                 
                 color: #FFFFFF;
-                margin-top: 30px;
+                margin-top: 20px;
+                cursor: pointer;
             }
         }
         .MainPart__posts {
             width: 75%;
-            min-height: 300px;
+            min-height: 100px;
            // border: 2px solid green;
             .posts__content {
                 display: flex;

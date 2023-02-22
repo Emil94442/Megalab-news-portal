@@ -1,23 +1,20 @@
-import { NICKNAME, TOKEN } from "../types"
+import { NICKNAME, SEARCH_CONSOLE_OFF, SEARCH_CONSOLE_ON, TOKEN } from "../types"
 
 const initialState = {
-    MyToken: '',
-    nickname: '',
-    name: '',
-    last_name: ''
+    search_Console_Open: false
 }
 
 export const globalReducer = (state = initialState , action) => {
     switch (action.type) {
-        case TOKEN:
+        case SEARCH_CONSOLE_OFF:
             return {
                 ...state,
-                MyToken: action.data
+                search_Console_Open: false
             }
-        case NICKNAME:
+        case SEARCH_CONSOLE_ON:
             return {
                 ...state,
-                nickname: action.data
+                search_Console_Open: true
             }
         default:
             return state

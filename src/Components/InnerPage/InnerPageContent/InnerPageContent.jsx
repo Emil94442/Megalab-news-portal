@@ -8,14 +8,13 @@ import CommentReply from './CommentReply/CommentReply'
 //import arrow from "./Images/InnerPage/arrow-left.svg"
 import './InnerPageContent.scss'
 
-const InnerPageContent = ({post , setPost}) => {
+const InnerPageContent = ({post}) => {
 
   console.log(post.comment)
 
   const navigate = useNavigate()
   const [text, setText] = useState('')
   const [postComment , setPostComment] = useState(post.comment)
-  const [obgId, setObgId] = useState({})
   const [heard, setHeard] = useState(false)
 
   const heart = "/Images/InnerPage/heart.svg"
@@ -61,8 +60,6 @@ const InnerPageContent = ({post , setPost}) => {
 
       const responseComment = await authAxios.post(` ` , body)
       console.log(responseComment.data)
-
-      setObgId(responseComment.data)
   }
 
 
@@ -126,6 +123,11 @@ const InnerPageContent = ({post , setPost}) => {
       setHeard(false)
    } 
    }, [])
+
+
+   const NoCommentOrYes = () => {
+      if (post.comment) {}
+   }
    
 
   return (
@@ -176,10 +178,11 @@ const InnerPageContent = ({post , setPost}) => {
                 </div>
                 <div className="inp__comment-content">
                     <div className="inp__comment-title">Комментарии</div>
-                    {post.comment && !post.comment.length
+                    {postComment && !postComment.length
                       ? <h1 style={{margin: '20px 0'}}>Здесь нет комментариев</h1>
-                      : post.comment && postComment.map(comm =>
-                        <Comment comm={comm} post={post} obg={obgId}/>
+
+                      : postComment && postComment.map(comm =>
+                        <Comment comm={comm} post={post}/>
                     )
                     }
 

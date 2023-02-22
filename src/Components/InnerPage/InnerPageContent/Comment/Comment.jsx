@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import CommentReply from '../CommentReply/CommentReply'
 import './Comment.scss'
 
-const Comment = ({comm , post , obg}) => {
+const Comment = ({comm , post}) => {
 
 
   const [text, setText] = useState('')
@@ -17,9 +17,9 @@ const Comment = ({comm , post , obg}) => {
         "id": Date.now(),
         "user": {
             "id": Date.now(),
-            "nickname": "dolos",
-            "name": "dolos",
-            "last_name": "10_rangs",
+            "nickname": localStorage.getItem('nickname'),
+            "name": localStorage.getItem('name'),
+            "last_name": localStorage.getItem('last_name'),
             "profile_image": null
         },
         "text": text,
@@ -43,7 +43,7 @@ const Comment = ({comm , post , obg}) => {
       const body = {
         'post': post.id,
         'text': text,
-        'parent': obg.id
+        'parent': comm.id
       }
 
       const responseComment = await authAxios.post(` ` , body)

@@ -13,7 +13,7 @@ const Post = ({picture , heart , textClass , sizeOfTrash , posts , remove , ...p
 
   const changeHeart = async () => {
    if (!heard) {
-
+      
       setHeard(true)
 
       

@@ -23,3 +23,6 @@ export const PASSWORD_OFF = 'PASSWORD_OFF'
 export const TOKEN = 'TOKEN'
 
 export const NICKNAME = 'NICKNAME'
+
+export const SEARCH_CONSOLE_OFF = 'SEARCH_CONSOLE_OFF'
+export const SEARCH_CONSOLE_ON = 'SEARCH_CONSOLE_ON'

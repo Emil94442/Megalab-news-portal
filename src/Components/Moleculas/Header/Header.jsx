@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Header.scss'
 import ModalMenu from '../Header/ModalMenu/ModalMenu'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { searchConsoleOn } from '../../../redux/action'
+import { AuthContext } from '../../../AuthContext'
 
 const Header = () => {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [modalMenu , setModalMenu] = useState(false)
+  const {setSearchVisible} = useContext(AuthContext)
 
   return (
     <header className="header">
@@ -37,7 +42,11 @@ const Header = () => {
 
             <div className="header__block">
                 <div className="header__menu">
-                    <img src="/Images/Header/My-search.svg" alt="search" style={{cursor: 'pointer'}}/>
+                    <img 
+                       src="/Images/Header/My-search.svg" 
+                       alt="search" style={{cursor: 'pointer'}}
+                       onClick={() => setSearchVisible(true)}
+                    />
                     <img src="/Images/Header/My-user.svg" alt="user" style={{cursor: 'pointer'}} className='header__user-img' onClick={() => navigate(`/Profile`)}/>
                     <img src="/Images/Header/My-burger-menu.svg" alt="burger-menu" style={{cursor: 'pointer'}} onClick={() => setModalMenu(true)}/>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Footer from '../Moleculas/Footer/Footer'
-import './LikePage.scss'
+
 import LikePageContent from './LikePageContent/LikePageContent'
 
 const LikePage = () => {
